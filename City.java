@@ -121,7 +121,7 @@ private String cityName;
         statement.executeUpdate();
         connection.close();
         statement.close();
-        System.out.println("Student updated successfully!");
+        System.out.println("City updated successfully!");
     }
     public static void deleteCity(int id) throws SQLException {
         String sql = "DELETE FROM city WHERE ID = ?";
