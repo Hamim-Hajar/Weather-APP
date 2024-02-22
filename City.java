@@ -113,9 +113,11 @@ private String cityName;
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, city.getCityName());
-        statement.setInt(3,city.getCurrentTemperature());
-        statement.setInt(4,city.getCurrentHumidity());
-        statement.setInt(5,city.getCurrentWindSpeed());
+        statement.setInt(2,city.getCurrentTemperature());
+        statement.setInt(3,city.getCurrentHumidity());
+        statement.setInt(4,city.getCurrentWindSpeed());
+        statement.setInt(5,city.getCityId());
+
         statement.executeUpdate();
         connection.close();
         statement.close();

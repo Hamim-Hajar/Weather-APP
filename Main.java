@@ -3,11 +3,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        System.out.println("Hello world!");
-        System.out.println(City.infocities());
 
-        int choice, idCity,currentHumidity,currentTemperature,currentWindSpeed;
-        String Cityname ;
+        int choice, idCity, currentHumidity, currentTemperature, currentWindSpeed;
+        String Cityname;
         do {
             System.out.println("\t\t\t||=======================================||");
             System.out.println("\t\t\t||                 MENU                  ||");
@@ -18,34 +16,34 @@ public class Main {
             System.out.println("\t\t\t||                4: Display All City    ||");
             System.out.println("\t\t\t||                5: Quitter application ||");
             System.out.println("\t\t\t||=======================================||");
-            System.out.println("Enter votre choix: ");
+            System.out.println("Enter your choice: ");
             choice = new Scanner(System.in).nextInt();
             switch (choice) {
                 case 1:
                     System.out.print("Enter the ID of the City : ");
                     idCity = new Scanner(System.in).nextInt();
-                    System.out.print("Donner le nom de la ville : ");
+                    System.out.print("Enter the name of the city : ");
                     Cityname = new Scanner(System.in).nextLine();
-                    System.out.print("Donner l'humiditer actuell : ");
+                    System.out.print("Enter the current Humidity : ");
                     currentHumidity = new Scanner(System.in).nextInt();
-                    System.out.print("Donner l'humiditer actuell : ");
+                    System.out.print("Enter the current Temperature : ");
                     currentTemperature = new Scanner(System.in).nextInt();
-                    System.out.print("Donner l'humiditer actuell : ");
+                    System.out.print("Enter the current Wind Speed : ");
                     currentWindSpeed = new Scanner(System.in).nextInt();
-                    City.addcity(new City(idCity, Cityname, currentTemperature,currentHumidity,currentWindSpeed));
+                    City.addcity(new City(idCity, Cityname, currentTemperature, currentHumidity, currentWindSpeed));
                     break;
                 case 2:
                     System.out.print("Enter the ID of the City : ");
                     idCity = new Scanner(System.in).nextInt();
-                    System.out.print("Donner le nom de la ville : ");
+                    System.out.print("Enter the name of the city: ");
                     Cityname = new Scanner(System.in).nextLine();
-                    System.out.print("Donner l'humiditer actuell : ");
+                    System.out.print("Enter the current Humidity: ");
                     currentHumidity = new Scanner(System.in).nextInt();
-                    System.out.print("Donner l'humiditer actuell : ");
+                    System.out.print("Enter the current Temperature: ");
                     currentTemperature = new Scanner(System.in).nextInt();
-                    System.out.print("Donner l'humiditer actuell : ");
+                    System.out.print("Enter the current Wind Speed : ");
                     currentWindSpeed = new Scanner(System.in).nextInt();
-                    City.updateCity(new City(idCity, Cityname, currentTemperature,currentHumidity,currentWindSpeed));
+                    City.updateCity(new City(idCity, Cityname, currentTemperature, currentHumidity, currentWindSpeed));
                     break;
                 case 3:
                     System.out.print("Enter City ID to delete: ");
@@ -53,13 +51,13 @@ public class Main {
                     City.deleteCity(idCity);
                     break;
                 case 4:
-                    System.out.println("All students:");
+                    System.out.println("All cities:");
                     for (City ville : City.infocities()) {
                         System.out.println(ville);
                     }
                     break;
             }
-        }while (choice != 5) ;
+        } while (choice != 5);
     }
-    }
+
 }
