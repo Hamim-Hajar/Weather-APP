@@ -59,7 +59,14 @@ public class Main {
                 case 3:
                     System.out.print("Enter City ID to delete: ");
                     idCity = new Scanner(System.in).nextInt();
-                    City.deleteCity(idCity);
+                    System.out.print("Are you sure you want to delete the city with ID " + idCity + "? (yes/no): ");
+                    String confirm = new Scanner(System.in).nextLine().trim().toLowerCase();
+                    if (confirm.equals("yes")) {
+                        City.deleteCity(idCity);
+                    } else {
+                        System.out.println("Deletion cancelled City with ID " + idCity + " was not deleted.");
+                    }
+
                     break;
                 case 4:
 //                    System.out.println("Enter the city ID");
@@ -71,28 +78,33 @@ public class Main {
                     break;
                 case 5:
                     Scanner scanner = new Scanner(System.in);
-                    System.out.print("Enter the ID of the history City : ");
+                    System.out.print("Enter the  ID of the history City : ");
                     int histrycityid = scanner.nextInt();
                     System.out.println("Enter the ID of the city");
                     int cityid = scanner.nextInt();
 
-                    System.out.println("Please enter a date (format: yyyy-MM-dd): ");
-                    String eventdate = scanner.next();
-
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    try {
-                        Date date = dateFormat.parse(eventdate);
-                        System.out.println("Entered Date: " + dateFormat.format(date));
-                    } catch (ParseException e) {
-                        System.out.println("Incorrect date format. Please enter a date in yyyy-MM-dd format.");
+                    Date date1 = null;
+                    String eventdate;
+                    while (true) {
+                        System.out.println("Please enter a date (format:yyyy-MM-dd):");
+                        eventdate = scanner.next();
+                        try {
+                            date1 = dateFormat.parse(eventdate);
+                            break;
+
+                        } catch (ParseException e) {
+                            System.out.println("Incorrect date format Please enter a date in yyyy-MM-dd format");
+                        }
                     }
-                    System.out.println("Enter the temperature of the city");
+                    System.out.println("Enter the  temperature of the city");
                     int temperature = scanner.nextInt();
                     CityHistory.addcityhistory(new CityHistory(histrycityid, cityid, eventdate, temperature));
                     break;
                 case 6:
                     Scanner scanner1 = new Scanner(System.in);
-                    System.out.print("Enter the ID of the history City : ");
+
+                    System.out.print("Enter the  ID of the history City : ");
                     int histrycityid1 = scanner1.nextInt();
                     System.out.println("Enter the ID of the city");
                     int cityid1 = scanner1.nextInt();
@@ -123,6 +135,8 @@ public class Main {
                     }
                     break;
 
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choice);
             }
 
 
