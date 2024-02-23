@@ -11,12 +11,15 @@ public class Main {
         String Cityname;
         do {
             System.out.println("\t\t\t||========================================================||");
-            System.out.println("\t\t\t||                       MENU                             ||");
+            System.out.println("\t\t\t||                       CITY MENU                        ||");
             System.out.println("\t\t\t||========================================================||");
             System.out.println("\t\t\t||              1: Add City                               ||");
             System.out.println("\t\t\t||              2: Update City                            ||");
             System.out.println("\t\t\t||              3: Delete City                            ||");
             System.out.println("\t\t\t||              4: Display All Cities                     ||");
+            System.out.println("\t\t\t||========================================================||");
+            System.out.println("\t\t\t||                      CITY HISTORY MENU                 ||");
+            System.out.println("\t\t\t||========================================================||");
             System.out.println("\t\t\t||              5: Add the historical Data of the city    ||");
             System.out.println("\t\t\t||              6: Update the historical Data of the city ||");
             System.out.println("\t\t\t||              7: Delete the historical Data of the city ||");
@@ -59,6 +62,8 @@ public class Main {
                     City.deleteCity(idCity);
                     break;
                 case 4:
+//                    System.out.println("Enter the city ID");
+//                    int cID=new Scanner(System.in).nextInt();
                     System.out.println("All cities:");
                     for (City ville : City.infocities()) {
                         System.out.println(ville);
@@ -86,7 +91,25 @@ public class Main {
                     CityHistory.addcityhistory(new CityHistory(histrycityid, cityid, eventdate, temperature));
                     break;
                 case 6:
+                    Scanner scanner1 = new Scanner(System.in);
+                    System.out.print("Enter the ID of the history City : ");
+                    int histrycityid1 = scanner1.nextInt();
+                    System.out.println("Enter the ID of the city");
+                    int cityid1 = scanner1.nextInt();
 
+                    System.out.println("Please enter a date (format: yyyy-MM-dd): ");
+                    String eventdate1 = scanner1.next();
+
+                    SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+                    try {
+                        Date date = dateFormat1.parse(eventdate1);
+                        System.out.println("Entered Date: " + dateFormat1.format(date));
+                    } catch (ParseException e) {
+                        System.out.println("Incorrect date format. Please enter a date in yyyy-MM-dd format.");
+                    }
+                    System.out.println("Enter the temperature of the city");
+                    int temperature1 = scanner1.nextInt();
+                    CityHistory.updatecityhistory(new CityHistory(histrycityid1, cityid1, eventdate1, temperature1));
                     break;
                 case 7:
                     System.out.print("Enter  IDhistory to delete the history city: ");

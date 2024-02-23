@@ -77,7 +77,7 @@ private String cityName;
     }
     public static List<City> infocities() throws SQLException {
         List<City> infocity = new ArrayList<>();
-        String sql = "SELECT * FROM city";
+        String sql = "SELECT * FROM city ";
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
